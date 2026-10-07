@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    text-align: center;
+    padding: 45px 20px 30px;
+}
+
+.intro h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.intro p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+
+/* =========================
+   TASK CARDS
+========================= */
+
+.tasks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 20px 0 45px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+.icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card span {
+    display: inline-block;
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.card button,
+.task-details button {
+    border: none;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s ease;
+}
+
+.card button:hover,
+.task-details button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+
+/* =========================
+   TASK DETAILS
+========================= */
+
+.task-details {
+    display: none;
+    background: white;
+    padding: 35px;
+    margin: 10px 0 40px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.task-details h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.task-details > p {
+    color: #64748b;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   TOOLS
+========================= */
+
+.tool {
+    margin-top: 25px;
+}
+
+.tool select,
+.tool input {
+    padding: 12px;
+    margin: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+}
+
+.tool select:focus,
+.tool input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+#result,
+#guessResult,
+#sudokuResult {
+    margin-top: 20px;
+    color: #4f46e5;
+}
+
+#attempts {
+    margin-top: 10px;
+}
+
+
+/* =========================
+   SUDOKU
+========================= */
+
+.sudoku-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    gap: 3px;
+    justify-content: center;
+    margin: 25px auto;
+}
+
+.sudoku-cell {
+    width: 40px;
+    height: 40px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+}
+
+
+/* =========================
+   PRODUCTS TABLE
+========================= */
+
+#productsContainer {
+    margin-top: 25px;
+    overflow-x: auto;
+}
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.products-table th {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+.products-table td {
+    padding: 13px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+.products-table tr:hover {
+    background: #f8fafc;
+}
+
+.products-table td:nth-child(2) {
+    font-weight: bold;
+}
+
+.products-table td:nth-child(3) {
+    font-weight: bold;
+}
+
+
+/* =========================
+   TECHNOLOGIES
+========================= */
+
+.skills {
+    background: white;
+    text-align: center;
+    padding: 35px;
+    border-radius: 18px;
+    margin-bottom: 45px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.skills h2 {
+    margin-bottom: 25px;
+}
+
+.skill-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-list span {
+    background: #f1f5f9;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    color: #334155;
+    transition: 0.2s ease;
+}
+
+.skill-list span:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .tasks {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    .task-details {
+        padding: 25px 15px;
+    }
+
+    .sudoku-grid {
+        grid-template-columns: repeat(9, 32px);
+    }
+
+    .sudoku-cell {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+    }
+
+    .products-table {
+        font-size: 13px;
+    }
+
+}

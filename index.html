@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Task Collection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <h1>🐍 Python Task Collection</h1>
+        <p>My Python Internship Projects</p>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <section class="intro">
+        <h2>Completed Tasks</h2>
+
+        <p>
+            A collection of Python projects completed using
+            Python programming and problem-solving concepts.
+        </p>
+    </section>
+
+
+    <!-- TASK CARDS -->
+
+    <section class="tasks">
+
+        <div class="card" onclick="openTask('temperature')">
+
+            <div class="icon">🌡️</div>
+
+            <h3>Temperature Converter</h3>
+
+            <p>
+                Converts temperature between Celsius,
+                Fahrenheit and Kelvin.
+            </p>
+
+            <span>Python</span>
+
+            <button onclick="event.stopPropagation(); openTask('temperature')">
+                Open Task →
+            </button>
+
+        </div>
+
+
+        <div class="card" onclick="openTask('guessing')">
+
+            <div class="icon">🎯</div>
+
+            <h3>Number Guessing Game</h3>
+
+            <p>
+                Guess a random number between 1 and 100.
+            </p>
+
+            <span>Python</span>
+
+            <button onclick="event.stopPropagation(); openTask('guessing')">
+                Open Task →
+            </button>
+
+        </div>
+
+
+        <div class="card" onclick="openTask('sudoku')">
+
+            <div class="icon">🧩</div>
+
+            <h3>Sudoku Solver</h3>
+
+            <p>
+                Solves Sudoku puzzles using
+                a backtracking algorithm.
+            </p>
+
+            <span>Python</span>
+
+            <button onclick="event.stopPropagation(); openTask('sudoku')">
+                Open Task →
+            </button>
+
+        </div>
+
+
+        <div class="card" onclick="openTask('scraper')">
+
+            <div class="icon">🛒</div>
+
+            <h3>E-commerce Product Scraper</h3>
+
+            <p>
+                Extracts product names, prices and ratings
+                and stores them in CSV format.
+            </p>
+
+            <span>Python + BeautifulSoup</span>
+
+            <button onclick="event.stopPropagation(); openTask('scraper')">
+                Open Task →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- TASK DETAILS -->
+
+    <section id="taskDetails" class="task-details">
+
+        <h2 id="taskTitle">Select a Task</h2>
+
+        <p id="taskDescription">
+            Click on any task card above to view the task.
+        </p>
+
+
+        <!-- TEMPERATURE -->
+
+        <div id="temperatureTool" class="tool">
+
+            <select id="conversionType">
+
+                <option value="cToF">Celsius → Fahrenheit</option>
+                <option value="fToC">Fahrenheit → Celsius</option>
+                <option value="cToK">Celsius → Kelvin</option>
+                <option value="kToC">Kelvin → Celsius</option>
+                <option value="fToK">Fahrenheit → Kelvin</option>
+                <option value="kToF">Kelvin → Fahrenheit</option>
+
+            </select>
+
+
+            <input
+                type="number"
+                id="temperatureInput"
+                placeholder="Enter temperature"
+            >
+
+
+            <button id="convertButton">
+                Convert
+            </button>
+
+
+            <h3 id="result"></h3>
+
+        </div>
+
+
+        <!-- GUESSING GAME -->
+
+        <div id="guessingTool" class="tool">
+
+            <h3>🎯 Guess the Number</h3>
+
+            <p>
+                I selected a number between 1 and 100.
+            </p>
+
+
+            <input
+                type="number"
+                id="guessInput"
+                placeholder="Enter your guess"
+                min="1"
+                max="100"
+            >
+
+
+            <button id="guessButton">
+                Guess
+            </button>
+
+
+            <h3 id="guessResult"></h3>
+
+            <p id="attempts"></p>
+
+
+            <button id="newGameButton">
+                🔄 New Game
+            </button>
+
+        </div>
+
+
+        <!-- SUDOKU -->
+
+        <div id="sudokuTool" class="tool">
+
+            <h3>🧩 Sudoku Solver</h3>
+
+            <p>
+                Enter numbers in the Sudoku grid.
+                Use 0 for empty cells.
+            </p>
+
+
+            <div id="sudokuGrid" class="sudoku-grid"></div>
+
+
+            <button id="solveSudokuButton">
+                🧩 Solve Sudoku
+            </button>
+
+
+            <button id="clearSudokuButton">
+                🔄 Clear
+            </button>
+
+
+            <h3 id="sudokuResult"></h3>
+
+        </div>
+
+
+        <!-- SCRAPER -->
+
+        <div id="scraperTool" class="tool">
+
+            <h3>🛒 E-commerce Products</h3>
+
+            <p>
+                Products scraped using Python,
+                Requests and BeautifulSoup.
+            </p>
+
+
+            <button id="loadProductsButton">
+                📦 Load Products
+            </button>
+
+
+            <div id="productsContainer"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGIES -->
+
+    <section class="skills">
+
+        <h2>Technologies Used</h2>
+
+
+        <div class="skill-list">
+
+            <span>Python</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Requests</span>
+            <span>BeautifulSoup</span>
+            <span>CSV</span>
+            <span>Flask</span>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Python Task Collection |
+        Built with Python, HTML, CSS & Flask
+    </p>
+
+</footer>
+
+
+<script>
+
+let randomNumber = 0;
+let attempts = 0;
+
+
+/* OPEN TASK */
+
+function openTask(task) {
+
+    const details =
+        document.getElementById("taskDetails");
+
+    const title =
+        document.getElementById("taskTitle");
+
+    const description =
+        document.getElementById("taskDescription");
+
+
+    document.getElementById("temperatureTool").style.display = "none";
+
+    document.getElementById("guessingTool").style.display = "none";
+
+    document.getElementById("sudokuTool").style.display = "none";
+
+    document.getElementById("scraperTool").style.display = "none";
+
+
+    if (task === "temperature") {
+
+        title.innerText =
+            "🌡️ Temperature Converter";
+
+        description.innerText =
+            "Convert temperatures between Celsius, Fahrenheit and Kelvin.";
+
+        document.getElementById("temperatureTool").style.display = "block";
+
+    }
+
+
+    else if (task === "guessing") {
+
+        title.innerText =
+            "🎯 Number Guessing Game";
+
+        description.innerText =
+            "Guess the random number between 1 and 100.";
+
+        document.getElementById("guessingTool").style.display = "block";
+
+        startNewGame();
+
+    }
+
+
+    else if (task === "sudoku") {
+
+        title.innerText =
+            "🧩 Sudoku Solver";
+
+        description.innerText =
+            "Enter a Sudoku puzzle and solve it automatically.";
+
+        document.getElementById("sudokuTool").style.display = "block";
+
+        createSudokuGrid();
+
+    }
+
+
+    else if (task === "scraper") {
+
+        title.innerText =
+            "🛒 E-commerce Product Scraper";
+
+        description.innerText =
+            "View products collected using Python and BeautifulSoup.";
+
+        document.getElementById("scraperTool").style.display = "block";
+
+    }
+
+
+    details.style.display = "block";
+
+
+    details.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* TEMPERATURE CONVERTER */
+
+document
+.getElementById("convertButton")
+.addEventListener("click", function () {
+
+    const temperature =
+        parseFloat(
+            document.getElementById("temperatureInput").value
+        );
+
+
+    const type =
+        document.getElementById("conversionType").value;
+
+
+    const result =
+        document.getElementById("result");
+
+
+    if (isNaN(temperature)) {
+
+        result.innerText =
+            "Please enter a temperature.";
+
+        return;
+
+    }
+
+
+    let answer;
+
+
+    if (type === "cToF") {
+
+        answer =
+            (temperature * 9 / 5) + 32;
+
+        result.innerText =
+            temperature + " °C = " +
+            answer.toFixed(2) + " °F";
+
+    }
+
+
+    else if (type === "fToC") {
+
+        answer =
+            (temperature - 32) * 5 / 9;
+
+        result.innerText =
+            temperature + " °F = " +
+            answer.toFixed(2) + " °C";
+
+    }
+
+
+    else if (type === "cToK") {
+
+        answer =
+            temperature + 273.15;
+
+        result.innerText =
+            temperature + " °C = " +
+            answer.toFixed(2) + " K";
+
+    }
+
+
+    else if (type === "kToC") {
+
+        answer =
+            temperature - 273.15;
+
+        result.innerText =
+            temperature + " K = " +
+            answer.toFixed(2) + " °C";
+
+    }
+
+
+    else if (type === "fToK") {
+
+        answer =
+            (temperature - 32) * 5 / 9 + 273.15;
+
+        result.innerText =
+            temperature + " °F = " +
+            answer.toFixed(2) + " K";
+
+    }
+
+
+    else if (type === "kToF") {
+
+        answer =
+            (temperature - 273.15) * 9 / 5 + 32;
+
+        result.innerText =
+            temperature + " K = " +
+            answer.toFixed(2) + " °F";
+
+    }
+
+});
+
+
+/* NUMBER GUESSING GAME */
+
+function startNewGame() {
+
+    randomNumber =
+        Math.floor(Math.random() * 100) + 1;
+
+    attempts = 0;
+
+
+    document.getElementById("guessInput").value = "";
+
+    document.getElementById("guessResult").innerText = "";
+
+    document.getElementById("attempts").innerText = "";
+
+}
+
+
+document
+.getElementById("guessButton")
+.addEventListener("click", function () {
+
+    const guess =
+        parseInt(
+            document.getElementById("guessInput").value
+        );
+
+
+    const result =
+        document.getElementById("guessResult");
+
+
+    const attemptText =
+        document.getElementById("attempts");
+
+
+    if (isNaN(guess) || guess < 1 || guess > 100) {
+
+        result.innerText =
+            "Please enter a number between 1 and 100.";
+
+        return;
+
+    }
+
+
+    attempts++;
+
+
+    if (guess < randomNumber) {
+
+        result.innerText =
+            "⬆️ Too Low! Try again.";
+
+    }
+
+
+    else if (guess > randomNumber) {
+
+        result.innerText =
+            "⬇️ Too High! Try again.";
+
+    }
+
+
+    else {
+
+        result.innerText =
+            "🎉 Congratulations! You guessed it!";
+
+    }
+
+
+    attemptText.innerText =
+        "Attempts: " + attempts;
+
+});
+
+
+document
+.getElementById("newGameButton")
+.addEventListener("click", startNewGame);
+
+
+/* SUDOKU GRID */
+
+function createSudokuGrid() {
+
+    const grid =
+        document.getElementById("sudokuGrid");
+
+
+    grid.innerHTML = "";
+
+
+    for (let i = 0; i < 81; i++) {
+
+        const input =
+            document.createElement("input");
+
+
+        input.type = "number";
+
+        input.min = "0";
+
+        input.max = "9";
+
+        input.className = "sudoku-cell";
+
+
+        grid.appendChild(input);
+
+    }
+
+}
+
+
+/* SOLVE SUDOKU */
+
+document
+.getElementById("solveSudokuButton")
+.addEventListener("click", function () {
+
+    const cells =
+        document.querySelectorAll(".sudoku-cell");
+
+
+    let board = [];
+
+
+    for (let row = 0; row < 9; row++) {
+
+        let currentRow = [];
+
+
+        for (let col = 0; col < 9; col++) {
+
+            let value =
+                parseInt(
+                    cells[row * 9 + col].value
+                );
+
+
+            if (isNaN(value)) {
+                value = 0;
+            }
+
+
+            currentRow.push(value);
+
+        }
+
+
+        board.push(currentRow);
+
+    }
+
+
+    if (solveSudoku(board)) {
+
+        for (let row = 0; row < 9; row++) {
+
+            for (let col = 0; col < 9; col++) {
+
+                cells[row * 9 + col].value =
+                    board[row][col];
+
+            }
+
+        }
+
+
+        document.getElementById("sudokuResult").innerText =
+            "🎉 Sudoku solved successfully!";
+
+    }
+
+
+    else {
+
+        document.getElementById("sudokuResult").innerText =
+            "❌ No solution exists.";
+
+    }
+
+});
+
+
+function solveSudoku(board) {
+
+    for (let row = 0; row < 9; row++) {
+
+        for (let col = 0; col < 9; col++) {
+
+            if (board[row][col] === 0) {
+
+                for (let num = 1; num <= 9; num++) {
+
+                    if (isValid(board, row, col, num)) {
+
+                        board[row][col] = num;
+
+
+                        if (solveSudoku(board)) {
+                            return true;
+                        }
+
+
+                        board[row][col] = 0;
+
+                    }
+
+                }
+
+
+                return false;
+
+            }
+
+        }
+
+    }
+
+
+    return true;
+
+}
+
+
+function isValid(board, row, col, num) {
+
+    for (let i = 0; i < 9; i++) {
+
+        if (board[row][i] === num) {
+            return false;
+        }
+
+
+        if (board[i][col] === num) {
+            return false;
+        }
+
+    }
+
+
+    const startRow =
+        Math.floor(row / 3) * 3;
+
+
+    const startCol =
+        Math.floor(col / 3) * 3;
+
+
+    for (let i = 0; i < 3; i++) {
+
+        for (let j = 0; j < 3; j++) {
+
+            if (
+                board[startRow + i][startCol + j]
+                === num
+            ) {
+
+                return false;
+
+            }
+
+        }
+
+    }
+
+
+    return true;
+
+}
+
+
+/* CLEAR SUDOKU */
+
+document
+.getElementById("clearSudokuButton")
+.addEventListener("click", function () {
+
+    createSudokuGrid();
+
+    document.getElementById("sudokuResult").innerText = "";
+
+});
+
+
+/* E-COMMERCE SCRAPER */
+
+document
+.getElementById("loadProductsButton")
+.addEventListener("click", function () {
+
+    const container =
+        document.getElementById("productsContainer");
+
+
+    container.innerHTML =
+        "<p>⏳ Loading products...</p>";
+
+
+    fetch("http://127.0.0.1:5000/products")
+
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Server error");
+            }
+
+            return response.json();
+
+        })
+
+
+        .then(products => {
+
+            container.innerHTML = "";
+
+
+            if (products.length === 0) {
+
+                container.innerHTML =
+                    "<p>No products found.</p>";
+
+                return;
+
+            }
+
+
+            const table =
+                document.createElement("table");
+
+
+            table.className =
+                "products-table";
+
+
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            `;
+
+
+            const tbody =
+                table.querySelector("tbody");
+
+
+            products.forEach(product => {
+
+                const row =
+                    document.createElement("tr");
+
+
+                row.innerHTML = `
+                    <td>${product["Product Name"]}</td>
+                    <td>${product["Price"]}</td>
+                    <td>${product["Rating"]}</td>
+                `;
+
+
+                tbody.appendChild(row);
+
+            });
+
+
+            container.appendChild(table);
+
+        })
+
+
+        .catch(error => {
+
+            container.innerHTML = `
+                <p>
+                    ❌ Could not connect to Flask server.
+                    Make sure <b>python server.py</b>
+                    is running.
+                </p>
+            `;
+
+        });
+
+});
+
+</script>
+
+</body>
+
+</html>
